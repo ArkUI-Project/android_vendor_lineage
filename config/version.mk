@@ -17,8 +17,13 @@ ifndef LINEAGE_BUILDTYPE
     endif
 endif
 
+# This source tree is maintained by the ArkUI Project. Explicit release types still apply.
+ifeq ($(strip $(LINEAGE_BUILDTYPE)),)
+    LINEAGE_BUILDTYPE := OFFICIAL
+endif
+
 # Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
+ifeq ($(filter OFFICIAL RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
     LINEAGE_BUILDTYPE := UNOFFICIAL
     LINEAGE_EXTRAVERSION :=
 endif
