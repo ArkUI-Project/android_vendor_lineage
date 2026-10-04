@@ -1,6 +1,10 @@
 # Inherit common mobile Lineage stuff
 $(call inherit-product, vendor/lineage/config/common.mk)
 
+# ArkUI native small windows, built from frameworks/base.
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/lineage/overlay/arkui-mobile
+PRODUCT_PACKAGE_OVERLAYS += vendor/lineage/overlay/arkui-mobile
+
 # Include AOSP audio files
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage14.mk)
 include vendor/lineage/config/aosp_audio.mk
