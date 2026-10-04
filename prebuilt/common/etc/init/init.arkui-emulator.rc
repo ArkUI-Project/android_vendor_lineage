@@ -1,0 +1,8 @@
+# Copyright (C) 2026 The ArkUI Project
+# SPDX-License-Identifier: Apache-2.0
+
+# Ranchu sets the legacy GL defaults in early-init. Select Vulkan before starting
+# framework services, only when the host provides ASG and the Ranchu Vulkan HAL.
+on init && property:ro.boot.hardware.gltransport=asg && property:ro.boot.hardware.vulkan=ranchu
+    setprop debug.hwui.renderer skiavk
+    setprop debug.renderengine.backend skiavkthreaded

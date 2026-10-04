@@ -30,6 +30,10 @@ PRODUCT_BRAND := ArkUI
 PRODUCT_MANUFACTURER := ArkUI
 PRODUCT_MODEL := ArkUI Emulator x86_64
 
+# Use the shared-memory graphics path without GL/Vulkan interop during composition.
+PRODUCT_COPY_FILES += \
+    vendor/lineage/prebuilt/common/etc/init/init.arkui-emulator.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.arkui-emulator.rc
+
 PRODUCT_SDK_ADDON_NAME := lineage
 PRODUCT_SDK_ADDON_SYS_IMG_SOURCE_PROP := $(LOCAL_PATH)/source.properties
 
