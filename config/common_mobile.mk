@@ -20,6 +20,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 # Apps
 PRODUCT_PACKAGES += \
     ArkSidebar \
+    ArkGame \
     ArkWheel \
     AvatarPicker \
     Backgrounds \
