@@ -1,5 +1,6 @@
 //
 // SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-FileCopyrightText: 2026 The ArkUI Project
 // SPDX-License-Identifier: Apache-2.0
 //
 
@@ -10,9 +11,10 @@ genrule {
         "soong_zip",
     ],
     tool_files: [
-        "bootanimation.tar",
+        "arkui-boot-logo.svg",
         "desc.txt",
         "gen-bootanimation.sh",
+        "render-bootanimation.awk",
     ],
     out: ["bootanimation.zip"],
 
@@ -24,9 +26,9 @@ genrule {
             "cp ../../../../../" + prebuilt_file + " $(out)",
         (any @ height, any @ width, any @ half_res, default):
             "$(location gen-bootanimation.sh)" +
-            " $(out)" +
             " $(genDir)" +
-            " $(location bootanimation.tar)" +
+            " $(location arkui-boot-logo.svg)" +
+            " $(location render-bootanimation.awk)" +
             " $(location desc.txt)" +
             " $(location mogrify)" +
             " $(location soong_zip)" +
@@ -35,9 +37,9 @@ genrule {
             " " + half_res,
         (default, default, default, default):
             "$(location gen-bootanimation.sh)" +
-            " $(out)" +
             " $(genDir)" +
-            " $(location bootanimation.tar)" +
+            " $(location arkui-boot-logo.svg)" +
+            " $(location render-bootanimation.awk)" +
             " $(location desc.txt)" +
             " $(location mogrify)" +
             " $(location soong_zip)" +

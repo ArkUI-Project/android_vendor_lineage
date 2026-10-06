@@ -2,6 +2,7 @@
 #
 # Copyright (C) 2016 The CyanogenMod Project
 #               2017-2024 The LineageOS Project
+#               2026 The ArkUI Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,9 +17,11 @@
 # limitations under the License.
 #
 
-PARAM_OUT=$1
-PARAM_GENDIR=$2
-PARAM_BOOTANIMATION_TAR=$3
+set -u -o pipefail
+
+PARAM_GENDIR=$1
+PARAM_LOGO=$2
+PARAM_RENDERER=$3
 PARAM_DESC_TXT=$4
 PARAM_MOGRIFY=$5
 PARAM_SOONG_ZIP=$6
@@ -26,31 +29,40 @@ PARAM_TARGET_SCREEN_HEIGHT=$7
 PARAM_TARGET_SCREEN_WIDTH=$8
 PARAM_TARGET_BOOTANIMATION_HALF_RES=$9
 
-INTERMEDIATES=$PARAM_GENDIR/intermediates
-
-mkdir -p $INTERMEDIATES
-
-tar xfp $PARAM_BOOTANIMATION_TAR -C $INTERMEDIATES
-
-if [ $PARAM_TARGET_SCREEN_HEIGHT -lt $PARAM_TARGET_SCREEN_WIDTH ]; then
-    IMAGEWIDTH=$PARAM_TARGET_SCREEN_HEIGHT
-else
-    IMAGEWIDTH=$PARAM_TARGET_SCREEN_WIDTH
+if ! [[ "$PARAM_TARGET_SCREEN_HEIGHT" =~ ^[0-9]+$ &&
+        "$PARAM_TARGET_SCREEN_WIDTH" =~ ^[0-9]+$ ]] ||
+        (( PARAM_TARGET_SCREEN_HEIGHT < 6 || PARAM_TARGET_SCREEN_WIDTH < 6 )); then
+    echo "Boot animation requires positive screen dimensions of at least 6 pixels" >&2
+    exit 1
 fi
 
-IMAGESCALEWIDTH=$IMAGEWIDTH
-IMAGESCALEHEIGHT=$(expr $IMAGESCALEWIDTH / 3);
-
-if [ "$PARAM_TARGET_BOOTANIMATION_HALF_RES" = "true" ]; then
-    IMAGEWIDTH="$(expr "$IMAGEWIDTH" / 2)"
+IMAGESCALEWIDTH=$PARAM_TARGET_SCREEN_WIDTH
+if (( PARAM_TARGET_SCREEN_HEIGHT < IMAGESCALEWIDTH )); then
+    IMAGESCALEWIDTH=$PARAM_TARGET_SCREEN_HEIGHT
 fi
+IMAGESCALEHEIGHT=$((IMAGESCALEWIDTH / 3))
+IMAGEWIDTH=$IMAGESCALEWIDTH
+if [[ "$PARAM_TARGET_BOOTANIMATION_HALF_RES" == "true" ]]; then
+    IMAGEWIDTH=$((IMAGEWIDTH / 2))
+fi
+IMAGEHEIGHT=$((IMAGEWIDTH / 3))
 
-IMAGEHEIGHT=$(expr $IMAGEWIDTH / 3);
-RESOLUTION="$IMAGEWIDTH"x"$IMAGEHEIGHT";
+# Keep the frame and letterbox backgrounds pure black for every boot theme.
+INTERMEDIATES="$PARAM_GENDIR/intermediates/black"
+mkdir -p "$INTERMEDIATES/part0" "$INTERMEDIATES/part1"
+rm -f "$INTERMEDIATES"/part*/*.mvg "$INTERMEDIATES"/part*/*.png
+awk -v destination="$INTERMEDIATES" \
+    -v frame_width="$IMAGEWIDTH" -v frame_height="$IMAGEHEIGHT" \
+    -f "$PARAM_RENDERER" "$PARAM_LOGO"
 
-$PARAM_MOGRIFY -resize $RESOLUTION -colors 256 $INTERMEDIATES/*/*.png;
+FRAMES=("$INTERMEDIATES"/part*/*.mvg)
+MAGICK_THREAD_LIMIT=1 "$PARAM_MOGRIFY" -size "${IMAGEWIDTH}x${IMAGEHEIGHT}" \
+    -format png -depth 8 -strip -define png:color-type=2 "${FRAMES[@]/#/MVG:}"
+rm "${FRAMES[@]}"
 
-echo "$IMAGESCALEWIDTH $IMAGESCALEHEIGHT 60" > $INTERMEDIATES/desc.txt;
-cat $PARAM_DESC_TXT >> $INTERMEDIATES/desc.txt
+echo "$IMAGESCALEWIDTH $IMAGESCALEHEIGHT 30" > "$INTERMEDIATES/desc.txt"
+cat "$PARAM_DESC_TXT" >> "$INTERMEDIATES/desc.txt"
 
-$PARAM_SOONG_ZIP -L 0 -o $PARAM_OUT -C $INTERMEDIATES -D $INTERMEDIATES
+# BootAnimation maps uncompressed ZIP entries directly into memory.
+"$PARAM_SOONG_ZIP" -L 0 -o "$PARAM_GENDIR/bootanimation.zip" \
+    -C "$INTERMEDIATES" -D "$INTERMEDIATES"
