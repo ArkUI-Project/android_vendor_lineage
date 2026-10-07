@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2026 The ArkUI Project
+     SPDX-License-Identifier: Apache-2.0 -->
+<resources>
+    <dimen name="status_bar_content_min_padding">28dp</dimen>
+    <dimen name="status_bar_padding_top">8dp</dimen>
+    <dimen name="status_bar_clock_starting_padding">12dp</dimen>
+    <dimen name="status_bar_system_icon_spacing">2dp</dimen>
+    <!-- Align the carrier label with the clock's glyphs, after their own internal padding. -->
+    <dimen name="keyguard_carrier_text_margin">44dp</dimen>
+</resources>
