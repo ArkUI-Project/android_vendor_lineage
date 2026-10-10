@@ -23,6 +23,7 @@ PRODUCT_PACKAGES += \
     ArkGame \
     ArkWheel \
     ArkRecognition \
+    ArkAssistant \
     AvatarPicker \
     Backgrounds \
     Gallery2 \
