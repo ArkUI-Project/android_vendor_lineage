@@ -54,7 +54,9 @@ case "$artifacts_dir/" in
 esac
 
 # Never reuse the emulator output, or inherit its product/release selection.
-export OUT_DIR="$source_dir/out/arkui-gsi"
+# Soong's test_package rules expect host output paths to start with "out".
+# The script has already changed to the source root, so keep OUT_DIR relative.
+export OUT_DIR=out/arkui-gsi
 unset OUT_DIR_COMMON_BASE OUT_DIR_SUFFIX DIST_DIR
 unset TARGET_PRODUCT TARGET_RELEASE TARGET_BUILD_VARIANT TARGET_BUILD_APPS
 unset LINEAGE_EXTRAVERSION TARGET_UNOFFICIAL_BUILD_ID RELEASE_TYPE
