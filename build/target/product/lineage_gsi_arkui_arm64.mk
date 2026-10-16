@@ -12,21 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# A system-only GSI has no device OTA payload for the Lineage updater.
-TARGET_DISABLE_LINEAGE_UPDATER := true
-
 # The official GSI profile is vanilla, including when WITH_GMS was exported.
 WITH_GMS := false
-GSI_FILE_SYSTEM_TYPE := ext4
 
-# Keep the lineage_gsi_ prefix and _arm64 suffix: upstream GSI rules use them.
-$(call inherit-product, vendor/lineage/build/target/product/lineage_gsi_arm64.mk)
+$(call inherit-product, vendor/lineage/build/target/product/lineage_gsi_arkui_common.mk)
 
 PRODUCT_NAME := lineage_gsi_arkui_arm64
-PRODUCT_BRAND := ArkUI
-PRODUCT_MANUFACTURER := ArkUI
 PRODUCT_MODEL := ArkUI GSI ARM64
 
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.arkui.gsi=true \
     ro.arkui.gsi.variant=vanilla

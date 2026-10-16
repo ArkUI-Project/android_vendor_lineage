@@ -23,6 +23,7 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/lineage_gsi_arm.mk \
     $(LOCAL_DIR)/lineage_gsi_arm64.mk \
     $(LOCAL_DIR)/lineage_gsi_arkui_arm64.mk \
+    $(LOCAL_DIR)/lineage_gsi_arkui_gms_arm64.mk \
     $(LOCAL_DIR)/lineage_gsi_x86.mk \
     $(LOCAL_DIR)/lineage_gsi_x86_64.mk \
     $(LOCAL_DIR)/lineage_gsi_car_arm64.mk \
@@ -48,6 +49,7 @@ COMMON_LUNCH_CHOICES := \
     lineage_gsi_arm-userdebug \
     lineage_gsi_arm64-userdebug \
     lineage_gsi_arkui_arm64-userdebug \
+    lineage_gsi_arkui_gms_arm64-userdebug \
     lineage_gsi_x86-userdebug \
     lineage_gsi_x86_64-userdebug \
     lineage_gsi_car_arm64-userdebug \
