@@ -27,7 +27,7 @@ PRODUCT_PACKAGES += \
     AvatarPicker \
     Backgrounds \
     Gallery2 \
-    Glimpse \
+    Albums \
     LatinIME
 
 ifeq ($(PRODUCT_TYPE), go)
