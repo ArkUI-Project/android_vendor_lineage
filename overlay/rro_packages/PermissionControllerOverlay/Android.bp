@@ -1,9 +1,13 @@
 //
 // SPDX-FileCopyrightText: 2025 The LineageOS Project
+// SPDX-FileCopyrightText: 2026 The ArkUI Project
 // SPDX-License-Identifier: Apache-2.0
 //
 
 runtime_resource_overlay {
     name: "PermissionControllerOverlay",
+    // Match PermissionController so AAPT keeps v36 styles instead of collapsing
+    // them to default resources, which lose to the target's v36 configuration.
+    min_sdk_version: "31",
     product_specific: true,
 }
