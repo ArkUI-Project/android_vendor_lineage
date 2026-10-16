@@ -1,6 +1,7 @@
 PRODUCT_VERSION_MAJOR = 23
 PRODUCT_VERSION_MINOR = 2
-ARKUI_VERSION = 1.0
+# Allow the build launcher to select the ArkUI version for this invocation.
+ARKUI_VERSION ?= 1.0
 
 ifeq ($(LINEAGE_VERSION_APPEND_TIME_OF_DAY),true)
     LINEAGE_BUILD_DATE := $(shell date -u +%Y%m%d_%H%M%S)
@@ -48,5 +49,5 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.arkui.version=$(ARKUI_VERSION) \
     ro.lineage.version=$(LINEAGE_VERSION) \
     ro.lineage.display.version=$(LINEAGE_DISPLAY_VERSION) \
-    ro.lineage.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
-    ro.lineage.releasetype=$(LINEAGE_BUILDTYPE)
+    org.arkui.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
+    org.arkui.releasetype=$(LINEAGE_BUILDTYPE)

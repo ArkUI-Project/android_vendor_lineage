@@ -1,0 +1,5 @@
+# Copyright (C) 2026 The ArkUI Project
+# SPDX-License-Identifier: Apache-2.0
+
+# Keep build identity writable only by init, including names without ro.*.
+neverallow { domain -init } custom_version_prop:property_service set;

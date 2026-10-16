@@ -1,0 +1,5 @@
+# Copyright (C) 2026 The ArkUI Project
+# SPDX-License-Identifier: Apache-2.0
+
+org.arkui.build.version u:object_r:custom_version_prop:s0 exact string
+org.arkui.releasetype   u:object_r:custom_version_prop:s0 exact string
