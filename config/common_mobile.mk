@@ -5,6 +5,13 @@ $(call inherit-product, vendor/lineage/config/common.mk)
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/lineage/overlay/arkui-mobile
 PRODUCT_PACKAGE_OVERLAYS += vendor/lineage/overlay/arkui-mobile
 
+# ArkUI default wallpaper.
+PRODUCT_COPY_FILES += \
+    vendor/lineage/prebuilt/common/media/wallpaper/arkui-clear-blue.png:$(TARGET_COPY_OUT_PRODUCT)/media/wallpaper/arkui-clear-blue.png
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.config.wallpaper=/product/media/wallpaper/arkui-clear-blue.png
+
 # Include AOSP audio files
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage14.mk)
 include vendor/lineage/config/aosp_audio.mk
