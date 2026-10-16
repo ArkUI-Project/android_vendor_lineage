@@ -3,3 +3,5 @@
 
 org.arkui.build.version u:object_r:custom_version_prop:s0 exact string
 org.arkui.releasetype   u:object_r:custom_version_prop:s0 exact string
+org.arkui.channel       u:object_r:custom_version_prop:s0 exact string
+org.arkui.channel.number u:object_r:custom_version_prop:s0 exact string
