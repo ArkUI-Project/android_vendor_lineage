@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 The ArkUI Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Android 16 can select either layout; both share the same ArkUI presentation. -->
+    <style name="PermissionGrantTitleMessageExpressive" parent="PermissionGrantTitleMessage" />
+    <style name="PermissionGrantDetailMessageExpressive" parent="PermissionGrantDetailMessage" />
+    <style name="PermissionGrantButtonListExpressive" parent="PermissionGrantButtonListMaterial3" />
+    <style name="PermissionGrantButtonExpressive" parent="ArkuiPermissionButton" />
+    <style name="PermissionGrantButtonAllowExpressive" parent="PermissionGrantButtonAllowMaterial3" />
+    <style name="PermissionGrantButtonAllowForegroundExpressive" parent="PermissionGrantButtonAllowForegroundMaterial3" />
+    <style name="PermissionGrantButtonAllowOneTimeExpressive" parent="PermissionGrantButtonAllowOneTimeMaterial3" />
+    <style name="PermissionGrantButtonAllowSelectedExpressive" parent="PermissionGrantButtonAllowSelectedMaterial3" />
+    <style name="PermissionGrantButtonAllowAllExpressive" parent="PermissionGrantButtonAllowAllMaterial3" />
+    <style name="PermissionGrantButtonDenyExpressive" parent="PermissionGrantButtonDenyMaterial3" />
+    <style name="PermissionGrantButtonNoUpgradeExpressive" parent="PermissionGrantButtonNoUpgradeMaterial3" />
+    <style name="PermissionGrantButtonDontAllowMoreExpressive" parent="PermissionGrantButtonDontAllowMoreMaterial3" />
+</resources>

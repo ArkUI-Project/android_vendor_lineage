@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 The ArkUI Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Match Android 16's versioned resources in both grant dialog layouts. -->
+    <!-- Keep the permission controller's layout, SecureButtons and grant handling intact. -->
+    <style name="Theme.PermissionGrantDialog" parent="@android:style/Theme.DeviceDefault.Light.Dialog">
+        <item name="android:windowBackground">@drawable/arkui_permission_dialog</item>
+        <item name="android:colorBackground">@color/arkui_permission_surface</item>
+        <item name="android:textColorPrimary">@color/arkui_permission_on_surface</item>
+        <item name="android:textColorSecondary">@color/arkui_permission_on_surface_variant</item>
+        <item name="android:divider">@null</item>
+    </style>
+
+    <style name="PermissionGrantDialogMaterial3">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/arkui_permission_dialog</item>
+    </style>
+
+    <style name="PermissionGrantContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">24dp</item>
+    </style>
+
+    <style name="PermissionGrantDescription">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+    <style name="PermissionGrantTitleIconMaterial3">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:background">@drawable/arkui_permission_badge</item>
+        <item name="android:tint">@color/arkui_permission_on_badge</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="PermissionGrantTitleMessage" parent="@android:style/TextAppearance.DeviceDefault.WindowTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">start</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/arkui_permission_on_surface</item>
+    </style>
+
+    <style name="PermissionGrantDetailMessage" parent="@android:style/TextAppearance.DeviceDefault">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/arkui_permission_on_surface_variant</item>
+    </style>
+
+    <style name="PermissionGrantButtonListMaterial3">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+    </style>
+
+    <!-- A 64dp row leaves a 40dp badge and room for wrapped or enlarged labels. -->
+    <style name="ArkuiPermissionButton" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">64dp</item>
+        <item name="android:layout_marginTop">1dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:drawablePadding">16dp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/arkui_permission_button_text</item>
+        <item name="android:backgroundTint">@null</item>
+        <item name="android:stateListAnimator">@animator/arkui_permission_button</item>
+    </style>
+
+    <style name="PermissionGrantButtonTop" parent="ArkuiPermissionButton">
+        <item name="android:background">@drawable/arkui_permission_row_top</item>
+    </style>
+
+    <style name="PermissionGrantButtonMiddle" parent="ArkuiPermissionButton">
+        <item name="android:background">@drawable/arkui_permission_row_middle</item>
+    </style>
+
+    <style name="PermissionGrantButtonBottom" parent="ArkuiPermissionButton">
+        <item name="android:background">@drawable/arkui_permission_row_bottom</item>
+    </style>
+
+    <style name="PermissionGrantButtonAllowMaterial3" parent="PermissionGrantButtonTop">
+        <item name="android:drawableStart">@drawable/arkui_permission_allow</item>
+    </style>
+
+    <style name="PermissionGrantButtonAllowForegroundMaterial3" parent="PermissionGrantButtonTop">
+        <item name="android:drawableStart">@drawable/arkui_permission_foreground</item>
+    </style>
+
+    <style name="PermissionGrantButtonAllowOneTimeMaterial3" parent="PermissionGrantButtonMiddle">
+        <item name="android:drawableStart">@drawable/arkui_permission_once</item>
+    </style>
+
+    <style name="PermissionGrantButtonAllowSelectedMaterial3" parent="PermissionGrantButtonTop">
+        <item name="android:drawableStart">@drawable/arkui_permission_selected</item>
+    </style>
+
+    <style name="PermissionGrantButtonAllowAllMaterial3" parent="PermissionGrantButtonMiddle">
+        <item name="android:drawableStart">@drawable/arkui_permission_allow</item>
+    </style>
+
+    <style name="PermissionGrantButtonDenyMaterial3" parent="PermissionGrantButtonBottom">
+        <item name="android:drawableStart">@drawable/arkui_permission_deny</item>
+    </style>
+
+    <style name="PermissionGrantButtonNoUpgradeMaterial3" parent="PermissionGrantButtonBottom">
+        <item name="android:drawableStart">@drawable/arkui_permission_deny</item>
+    </style>
+
+    <style name="PermissionGrantButtonDontAllowMoreMaterial3" parent="PermissionGrantButtonBottom">
+        <item name="android:drawableStart">@drawable/arkui_permission_deny</item>
+    </style>
+</resources>

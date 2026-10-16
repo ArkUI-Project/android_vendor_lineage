@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 The ArkUI Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:width="40dp" android:height="40dp" android:drawable="@drawable/arkui_permission_badge" />
+    <item android:width="24dp" android:height="24dp" android:gravity="center">
+        <vector android:width="24dp" android:height="24dp"
+            android:viewportWidth="24" android:viewportHeight="24">
+            <path android:pathData="M12,3a9,9 0,1 1,0 18a9,9 0,1 1,0 -18M12,7v5l3,2"
+                android:fillColor="@android:color/transparent"
+                android:strokeColor="@color/arkui_permission_on_badge" android:strokeWidth="1.8"
+                android:strokeLineCap="round" android:strokeLineJoin="round" />
+        </vector>
+    </item>
+</layer-list>

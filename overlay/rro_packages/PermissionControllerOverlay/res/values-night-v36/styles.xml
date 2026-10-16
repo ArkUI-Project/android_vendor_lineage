@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2026 The ArkUI Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <style name="Theme.PermissionGrantDialog" parent="@android:style/Theme.DeviceDefault.Dialog">
+        <item name="android:windowBackground">@drawable/arkui_permission_dialog</item>
+        <item name="android:colorBackground">@color/arkui_permission_surface</item>
+        <item name="android:textColorPrimary">@color/arkui_permission_on_surface</item>
+        <item name="android:textColorSecondary">@color/arkui_permission_on_surface_variant</item>
+        <item name="android:divider">@null</item>
+    </style>
+
+    <!-- Override the controller's more specific values-night-v31 icon style too. -->
+    <style name="PermissionGrantTitleIconMaterial3">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:background">@drawable/arkui_permission_badge</item>
+        <item name="android:tint">@color/arkui_permission_on_badge</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+</resources>
