@@ -163,7 +163,7 @@ function draw_relay(time,    elapsed, motion, step, phase, from, to, source_left
     extend = cubic_bezier(phase / 0.56, 0.20, 0, 0.10, 1);
     release = cubic_bezier((phase - 0.30) / 0.70, 0.32, 0, 0.20, 1);
     active_left = source_left + (target_left - source_left) * (to > from ? release : extend);
-    active_right = source_left + relay_width +
+    active_right = source_left + relay_width + \
             (target_left - source_left) * (to > from ? extend : release);
     for (track = 0; track < 3; track++) {
         rounded_line(relay_x + track * relay_pitch,
