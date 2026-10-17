@@ -292,11 +292,11 @@ KERNEL_MAKE_FLAGS += PAHOLE=$(BUILD_TOP)/prebuilts/kernel-build-tools/linux-x86/
 # Rust bindgen wants matching Clang and libclang versions
 KERNEL_MAKE_FLAGS += LIBCLANG_PATH=$(TARGET_KERNEL_CLANG_PATH)/lib
 
-# Set the out dir for the kernel's O= arg
-# This needs to be an absolute path, so only set this if the standard out dir isn't used
+# Kernel commands change directory, so anchor every relative output path to the build root.
+# Absolute OUT_DIR paths already work without an additional prefix.
 OUT_DIR_PREFIX := $(shell echo $(OUT_DIR) | sed -e 's|/target/.*$$||g')
 KERNEL_BUILD_OUT_PREFIX :=
-ifeq ($(OUT_DIR_PREFIX),out)
+ifeq ($(filter /%,$(OUT_DIR_PREFIX)),)
     KERNEL_BUILD_OUT_PREFIX := $(BUILD_TOP)/
 endif
 
