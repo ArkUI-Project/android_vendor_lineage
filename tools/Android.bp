@@ -1,0 +1,8 @@
+// Copyright (C) 2026 The ArkUI Project
+// SPDX-License-Identifier: Apache-2.0
+
+filegroup {
+    name: "lineage_kernel_header_cleanup",
+    srcs: ["clean_headers.sh"],
+    visibility: ["//vendor/lineage/build/soong:__pkg__"],
+}
