@@ -75,5 +75,5 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.arkui.version=$(ARKUI_VERSION) \
     ro.lineage.version=$(LINEAGE_VERSION) \
     ro.lineage.display.version=$(LINEAGE_DISPLAY_VERSION) \
-    org.arkui.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
+    org.arkui.build.version=$(ARKUI_VERSION) \
     org.arkui.releasetype=$(LINEAGE_BUILDTYPE)
