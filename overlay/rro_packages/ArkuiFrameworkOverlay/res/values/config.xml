@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2026 The ArkUI Project; SPDX-License-Identifier: Apache-2.0 -->
+<resources>
+    <!-- Keep mobile defaults above the optional GMS overlay without changing its core services. -->
+    <string name="config_defaultAssistant" translatable="false">org.arkui.assistant</string>
+
+    <!-- ArkUI screen recognition uses its own explicit SystemUI entry points. -->
+    <string name="config_defaultContextualSearchPackageName" translatable="false" />
+    <string name="config_defaultContextualSearchKey" translatable="false" />
+    <string name="config_defaultContextualSearchEnabled" translatable="false" />
+    <string name="config_defaultContextualSearchLegacyEnabled" translatable="false" />
+</resources>

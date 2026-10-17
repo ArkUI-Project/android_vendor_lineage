@@ -26,6 +26,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Apps
 PRODUCT_PACKAGES += \
+    ArkuiFrameworkOverlay \
     ArkSidebar \
     ArkGame \
     ArkWheel \
