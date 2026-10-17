@@ -70,10 +70,11 @@ LINEAGE_VERSION := ArkUI-$(ARKUI_VERSION)-$(LINEAGE_BUILDTYPE)-$(ARKUI_CHANNEL_L
 # Display version
 LINEAGE_DISPLAY_VERSION := $(LINEAGE_VERSION)
 
-# LineageOS version properties
+# Keep the LineageOS base version separate from the ArkUI release and build name.
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.arkui.version=$(ARKUI_VERSION) \
     ro.lineage.version=$(LINEAGE_VERSION) \
     ro.lineage.display.version=$(LINEAGE_DISPLAY_VERSION) \
+    ro.lineage.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
     org.arkui.build.version=$(ARKUI_VERSION) \
     org.arkui.releasetype=$(LINEAGE_BUILDTYPE)
